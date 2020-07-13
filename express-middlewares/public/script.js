@@ -8,19 +8,22 @@ encode.onclick = function() {
     let data = t1.value
         // btoa is a function tat encodes our data into *64 base encoding scheme
     data = btoa(data)
+        // console.log(data)
     code.value = data
 }
 
 encrypt.onclick = function() {
     let data = code.value
+    console.log(data)
     data = encryptData(data)
+    console.log(data)
     code.value = data;
 
 }
 
 
 function encryptData(rawdata) {
+    // console.log(rawdata)
 
-
-    return 'XXXXX'
+    return swapcase(rawdata)
 }

@@ -4,6 +4,13 @@ const app = express()
 app.use('/', express.static(__dirname + '/public'))
 
 
+function decryptQueryParams(req, res, next) {
+
+    // TODO: decrypt all query params as per our logic
+
+    next()
+}
+
 function decodeQueryBase64(req, res, next) {
     for (let q in req.query) {
         // console.log(req.query[q])
@@ -16,8 +23,7 @@ function decodeQueryBase64(req, res, next) {
     next()
 }
 
-
-app.get('/eval', decodeQueryBase64, (req, res) => {
+app.get('/eval', decryptQueryParams, decodeQueryBase64, (req, res) => {
     console.log(req.query)
         // eval function is a inbuilt function in JS to evaluate the code but it is not recomonded to take code as a inut from user as SQL injection can be done
     let y = eval(req.query.code)
